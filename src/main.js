@@ -1,8 +1,10 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from "vue"
+import App from './App'
+import Header from './components/layout/Header'
 
-Vue.config.productionTip = false
+Vue.component('global-header', Header)
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  el: "#app",
+  render: h => h(App)
+});

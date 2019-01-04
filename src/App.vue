@@ -1,28 +1,49 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div class="container">
+        <global-header />
+        <Profile
+            :userName="name"
+            :lastName="lastName"
+            :userAge="age"
+            :parents="parents"
+            @updateName="name = $event"
+        />
+        <Footer />
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+    import Footer from './components/layout/Footer'
+    import Profile from './components/pages/Profile'
+    export default {
+      data() {
+        return {
+          name: "Vitaliy",
+          lastName: "Kuzin",
+          age: 28,
+          parents: {
+            mother: "Larisa",
+            father: "Vladimir"
+          }
+        }
+      },
+      components: {
+        Footer,
+        Profile
+      }
+    }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+    }
+    .container {
+        padding: 30px;
+    }
+    .updateName {
+        margin: 20px 0 0;
+    }
 </style>
