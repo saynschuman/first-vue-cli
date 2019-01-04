@@ -1,57 +1,57 @@
 <template>
     <div class="container">
-        <global-header />
-        <div><span>name: </span>{{name}}</div>
-        <div><span>name: </span>{{lastName}}</div>
-        <Profile
-            :userName="name"
-            :lastName="lastName"
-            :userAge="age"
-            :parents="parents"
-            @updateName="name = $event"
-            :updateLastName="updateLastName"
-        />
-        <Footer />
+        <div class="row">
+            <div class="col-md-12">
+            <button class="button btn, btn-primary" @click="display = !display">Toggle</button>
+            <transition name="appear">
+                <div class="p-3 mb-2 bg-success text-white" v-if="display">Hello</div>
+            </transition>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-    import Footer from './components/layout/Footer'
-    import Profile from './components/pages/Profile'
     export default {
       data() {
         return {
-          name: "Vitaliy",
-          lastName: "Kuzin",
-          age: 28,
-          parents: {
-            mother: "Larisa",
-            father: "Vladimir"
-          }
+          display: false
         }
       },
       methods: {
         updateLastName(value) {
           this.lastName = value
         }
-      },
-      components: {
-        Footer,
-        Profile
       }
     }
 </script>
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Roboto', sans-serif;
+    button {
+        cursor: pointer;
     }
     .container {
-        padding: 30px;
+        margin-top: 20px;
     }
-    .updateName {
-        margin: 20px 0 0;
+    .button {
+        display: block;
+        margin-bottom: 20px;
     }
+    .appear-enter {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    .appear-enter-active {
+        transition: all 1s;
+    }
+    .appear-leave {
+
+    }
+
+    .appear-leave-active {
+        opacity: 0;
+        transition: all .5s;
+        transform: translateX(10px);
+    }
+
 </style>

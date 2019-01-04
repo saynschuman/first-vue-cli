@@ -65,7 +65,7 @@
         this.$emit('updateName', 'Vitaliy Kuzin')
       },
       getMessage() {
-        console.log(this.message);
+        this.message = this.defaultcountry
       }
     },
   }
