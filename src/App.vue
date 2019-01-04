@@ -1,12 +1,15 @@
 <template>
     <div class="container">
         <global-header />
+        <div><span>name: </span>{{name}}</div>
+        <div><span>name: </span>{{lastName}}</div>
         <Profile
             :userName="name"
             :lastName="lastName"
             :userAge="age"
             :parents="parents"
             @updateName="name = $event"
+            :updateLastName="updateLastName"
         />
         <Footer />
     </div>
@@ -25,6 +28,11 @@
             mother: "Larisa",
             father: "Vladimir"
           }
+        }
+      },
+      methods: {
+        updateLastName(value) {
+          this.lastName = value
         }
       },
       components: {
