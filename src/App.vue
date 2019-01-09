@@ -1,17 +1,17 @@
 <template>
   <div>
     <div class="container">
-      <div class="name">name: <span> {{name}} </span></div>
-      <div class="name">surname: <span>{{surName}}</span></div>
+      <div class="name">name: <span> {{showName}} </span></div>
+      <div class="name">surname: <span>{{showSurName}}</span></div>
+      <div class="name">age: <span>{{showAge}}</span></div>
     </div>
-    <Profile />
     <div class="container">
       <div class="buttons">
-        <button @click="updateName">update</button>
         <div>
-          <input type="text" v-model="inputName">
+          <input type="text" v-model="name">
           <div>
-            <button @click="addNewName">add new name</button>
+            <button @click="swapName(name)">add new name</button>
+            <button @click="changeAge">change age</button>
           </div>
         </div>
       </div>
@@ -20,32 +20,25 @@
 </template>
 
 <script>
-import Profile from './components/common/Profile'
+import { mapGetters, mapMutations } from 'vuex'
 export default {
   data() {
     return {
-      inputName: ''
+      name: ""
     };
   },
   computed: {
-    name() {
-      return this.$store.state.name
-    },
-    surName() {
-      return this.$store.state.surName
-    }
+    ...mapGetters([
+        'showAge',
+        'showName',
+        'showSurName'
+    ])
   },
   methods: {
-    updateName() {
-      // console.log('new mame')
-      this.$store.state.name = 'new Name'
-    },
-    addNewName() {
-      this.$store.state.name = this.inputName
-    }
-  },
-  components: {
-    Profile
+    ...mapMutations([
+      'changeAge',
+      'swapName'
+    ])
   }
 };
 </script>
