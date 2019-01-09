@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import age from './modules/age'
+
 
 Vue.use(Vuex)
 
@@ -12,9 +14,6 @@ export const store = new Vuex.Store({
     isLoading: false
   },
   getters: {
-    showAge(state) {
-      return state.age + ' years old'
-    },
     showSurName(state) {
       return state.surName
     },
@@ -29,9 +28,6 @@ export const store = new Vuex.Store({
     }
   },
   mutations: {
-    changeAge(state) {
-      return state.age++ + 'years old'
-    },
     swapName(state, name) {
       return state.name = name
     },
@@ -48,13 +44,16 @@ export const store = new Vuex.Store({
         context.commit('toggleLoading')
         setTimeout(() => {
           resolve(
-            context.state.count++
+            context.commit('increment')
           )
-        }, 1000)
+        }, 500)
       })
       promise.then(() => {
         context.commit('toggleLoading')
       })
     }
+  },
+  modules: {
+    age
   }
 })
