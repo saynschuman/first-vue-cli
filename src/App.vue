@@ -1,11 +1,26 @@
 <template>
   <div>
     <div class="container">
-      <div class="name">name: <span> {{showName}} </span></div>
-      <div class="name">surname: <span>{{showSurName}}</span></div>
-      <div class="name">age: <span>{{showAge}}</span></div>
-      <div v-if="isLoading" class="name">count: <span>loading...</span></div>
-      <div v-if="!isLoading" class="name">count: <span>{{showCount}}</span></div>
+      <div class="name">
+        name:
+        <span>{{showName}}</span>
+      </div>
+      <div class="name">
+        surname:
+        <span>{{showSurName}}</span>
+      </div>
+      <div class="name">
+        age:
+        <span>{{showAge}}</span>
+      </div>
+      <div v-if="isLoading" class="name">
+        count:
+        <span>loading...</span>
+      </div>
+      <div v-if="!isLoading" class="name">
+        count:
+        <span>{{showCount}}</span>
+      </div>
     </div>
     <div class="container">
       <div class="buttons">
@@ -23,7 +38,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapActions } from 'vuex'
+import { mapGetters, mapMutations, mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -32,27 +47,22 @@ export default {
   },
   computed: {
     ...mapGetters([
-        'showAge',
-        'showName',
-        'showSurName',
-        'showCount',
-        'isLoading'
+      "showAge",
+      "showName",
+      "showSurName",
+      "showCount",
+      "isLoading"
     ])
   },
   methods: {
-    ...mapMutations([
-      'changeAge',
-      'swapName'
-    ]),
-    ...mapActions([
-       'increment'
-    ])
+    ...mapMutations(["changeAge", "swapName"]),
+    ...mapActions(["increment"])
   }
 };
 </script>
 
 <style>
-  .container {
-    margin: 30px;
-  }
+.container {
+  margin: 30px;
+}
 </style>
