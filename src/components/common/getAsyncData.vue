@@ -8,10 +8,22 @@
 <script>
 export default {
   methods: {
+    async getData() {
+      try {
+        const get = await fetch("https://randomuser.me/api/?results=10");
+        const data = await get.json();
+        return data;
+      } catch (err) {
+        throw new Error("somth went wrong");
+      }
+    },
     async showData() {
-      const get = await fetch("https://randomuser.me/api/?results=10");
-      const data = await get.json();
-      console.log(data);
+      try {
+        const returnedData = await this.getData();
+        console.log(returnedData);
+      } catch (err) {
+        console.log(err);
+      }
     }
   },
   created() {
