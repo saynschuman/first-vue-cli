@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div>
     <div class="container">
       <div class="name">
@@ -34,11 +34,15 @@
         </div>
       </div>
     </div>
+    <div class="container">
+      <router-view />
+    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapMutations, mapActions } from "vuex";
+
 export default {
   data() {
     return {
