@@ -10,7 +10,7 @@ export default {
   methods: {
     async getData() {
       try {
-        const get = await fetch("https://randomuser.me/api/?results=10");
+        const get = await fetch("https://asrandomuser.me/api/?results=10");
         const data = await get.json();
         return data;
       } catch (err) {
